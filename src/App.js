@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useEffect } from "react";
 import Header from "./components/Header";
 import Form from "./components/Form";
+import NewsList from "./components/NewsList";
 import axios from "axios";
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
 
       <div className="container-white">
         <Form setCategory={setCategory} />
+        <NewsList news={news} />
       </div>
     </Fragment>
   );
