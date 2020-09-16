@@ -2,7 +2,7 @@ import React from "react";
 import useSelect from "../hooks/useSelect";
 import styles from "./Form.module.css";
 
-const Form = () => {
+const Form = ({ setCategory }) => {
   //API
   //http://newsapi.org/v2/top-headlines?country=us&category=general&apiKey=3fcdc1471e344ff7b83e2aa6a80660ab
 
@@ -18,10 +18,16 @@ const Form = () => {
 
   //Utilizamos custom hook
   const [selectstate, NewsSelection] = useSelect("general", CATEGORIES);
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+
+    setCategory(selectstate);
+  };
   return (
     <div className={`${styles.searcher} row`}>
       <div className="col s12 m8 offset-m2">
-        <form>
+        <form onSubmit={handleFormSubmit}>
           <h2 className={styles.heading}>Find News by Category</h2>
           <NewsSelection />
           <div className="input-field col s12">
